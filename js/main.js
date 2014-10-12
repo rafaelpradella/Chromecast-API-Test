@@ -42,6 +42,7 @@ $( document ).ready(function(){
 	    	}
 	    };
 
+	    // Listen if Chromecast is on a session
 	   	function sessionListener (e) {
 	   		session = e; // defines session status by event
 	   		console.log('New Session');
@@ -49,4 +50,23 @@ $( document ).ready(function(){
 	   			console.log('Found'+ session.media.length + 'sessions.'); 
 	   		}
 	   	};
+
+	   	// Launch Chromecast APP by user interaction //////////////////
+	   	$('#castme').click(function(){
+	   			launchApp(); 
+	   	});
+	   	function launchApp() {
+	   			console.log('Launching the Chromecast App');
+	   			chrome.cast.requestSession(onRequestSessionSuccess, onLaunchError);
+	   	};
+	   	////////////////////
+
+	   	function onRequestSessionSuccess(e){
+	   			console.log('Successfully created session:' + e.sessionID);
+	   			session = e;
+	   	}
+
+	   	function onLaunchError() {
+	   		alert ('Erro ao conectar no Chromecast')
+	   	}
 });
