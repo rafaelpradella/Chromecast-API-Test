@@ -64,9 +64,30 @@ $( document ).ready(function(){
 	   	function onRequestSessionSuccess(e){
 	   			console.log('Successfully created session:' + e.sessionID);
 	   			session = e;
+	   			loadMedia(); // Declare the function that streams the media content to the device
 	   	}
 
 	   	function onLaunchError() {
-	   		alert ('Erro ao conectar no Chromecast')
+	   			alert ('Erro ao conectar no Chromecast')
 	   	}
+
+	   	function loadMedia(){
+	   			// stop the function if hasn't session defined
+	   			if (!session) {
+	   					console.log('Too bad. Session is no longer on');
+	   					return;
+	   			}
+	   			// define URL of media
+	   			var mediaInfo = new chrome.cast.media.MediaInfo('http://rafaelpradella.github.io/media/message.mp4');
+	   			// contentType : MIME type
+	   			mediaInfo.contentType = 'video/mp4';
+
+	   			// Request load of the content and set autoplay to true
+	   			var request = new chrome.cast.media.LoadRequest(mediaInfo);
+	   			request.autoplay = true;
+
+	   			session.loadMedia(request);
+	   	}
+
+
 });
