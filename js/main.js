@@ -78,9 +78,9 @@ $( document ).ready(function(){
 	   					return;
 	   			}
 	   			// define URL of media
-	   			var mediaInfo = new chrome.cast.media.MediaInfo('http://rafaelpradella.github.io/media/message.mp4');
+	   			var mediaInfo = new chrome.cast.media.MediaInfo('http://rafaelpradella.github.io/media/message.webm');
 	   			// contentType : MIME type
-	   			mediaInfo.contentType = 'video/mp4';
+	   			mediaInfo.contentType = 'video/webm';
 
 	   			// Request load of the content and set autoplay to true
 	   			var request = new chrome.cast.media.LoadRequest(mediaInfo);
