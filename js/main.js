@@ -18,7 +18,7 @@ $( document ).ready(function(){
 	    function initializeCastApi(){
 	    	var applicationID = chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID; // Pick device ID
 	    	var sessionRequest = new chrome.cast.SessionRequest(applicationID); // request session in identified (by APP_ID) device
-	    	var apiConfig = new chrome.cast.ApiConfig(sessionRequest,sessionListener,receicerListener); 
+	    	var apiConfig = new chrome.cast.ApiConfig(sessionRequest,sessionListener,receiverListener); 
 	    	chrome.cast.initialize(apiConfig, onInitSuccess, onInitError);
 	    };
 
