@@ -1,8 +1,6 @@
-
 var session = null; // define status of Chromecast Session
 
 $( document ).ready(function(){
-	    
 		// Ping API
 	    var loadCastInterval = setInterval(function(){
 	            if (chrome.cast.isAvailable) {
@@ -10,7 +8,7 @@ $( document ).ready(function(){
 	                    clearInterval(loadCastInterval);
 	                    initializeCastApi();
 	            } else {
-	                    $('#castme').css("display","none"); // Hide button if API is unreachable
+	                     console.log('API unreachable');
 	            }
 	    }, 1000);
 
@@ -35,7 +33,8 @@ $( document ).ready(function(){
 	   	// Listen if Chromecast is reachable	
 	    function receiverListener(e){
 	    	if (e === 'available') {
-	    		console.log('Chromecast was found on the network')
+	    		console.log('Chromecast was found on the network');
+	    		$('#castme').css("display","block");
 	    	}
 
 	    	else {
